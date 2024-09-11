@@ -20,12 +20,12 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: my-app:v2     # 새 버전 이미지
+        image: anvesh35/echo-pod-name:v1.0.0     # 새 버전 이미지
         ports:
         - containerPort: 80
         readinessProbe:
           httpGet:
-            path: /healthz
+            path: /
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 10

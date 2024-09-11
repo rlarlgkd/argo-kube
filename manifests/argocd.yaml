@@ -5,8 +5,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/my-org/my-repo.git'
-    targetRevision: HEAD
+    repoURL: 'https://github.com/rlarlgkd/argo-kube'
+    targetRevision: main  #여기에 특정 브랜치 지정 (HEAD로 둬도 상관 없음)
     path: manifests/
   destination:
     server: 'https://kubernetes.default.svc'
