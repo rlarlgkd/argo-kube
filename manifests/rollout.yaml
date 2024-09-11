@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: my-app-rollout
+spec:
+  replicas: 3
+  strategy:
+    blueGreen:
+      activeService: my-app-active-svc  # 활성화된 서비스
+      previewService: my-app-preview-svc # 새 버전 배포를 미리 볼 수 있는 서비스
+      autoPromotionEnabled: false       # 수동으로 배포 전환을 허용
+      scaleDownDelaySeconds: 30         # 트래픽 전환 후 이전 파드를 제거하는 시간 지연
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: my-app:v2     # 새 버전 이미지
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
