@@ -20,12 +20,8 @@ spec:
     spec:
       containers:
       - name: dtx-dashboard-backend
-        image: rlarlgkd/dashboard-api:82
+        image: myrepo/dashboard-api:latest
         ports:
         - containerPort: 80
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
+      imagePullSecrets:
+      - name: my-docker-secret
