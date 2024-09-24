@@ -8,5 +8,5 @@ spec:
     app: dtx-dashboard-backend
   ports:
   - port: 80          # 서비스가 노출할 포트
-    targetPort: 80     # 파드에서 사용하는 포트
+    targetPort: 8181     # 파드에서 사용하는 포트
     nodePort: 30008    # 외부에서 접근하는 포트
