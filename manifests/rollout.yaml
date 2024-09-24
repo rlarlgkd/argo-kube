@@ -23,5 +23,32 @@ spec:
         image: rlarlgkd/dashboard-api:82
         ports:
         - containerPort: 80
+        env:   # 여기에서 환경 변수를 설정
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: odn-secret
+              key: db-name
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: odn-secret
+              key: db-password
+        - name: DB_URL
+          valueFrom:
+            secretKeyRef:
+              name: odn-secret
+              key: db-url
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: odn-secret
+              key: db-username
+        - name: EMR_API_URL
+          valueFrom:
+            secretKeyRef:
+              name: odn-secret
+              key: emr-api-url
+
       imagePullSecrets:
       - name: my-docker-secret
