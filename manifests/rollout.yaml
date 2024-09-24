@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: dtx-dashboard-backend
-        image: myrepo/dashboard-api:latest
+        image: rlarlgkd/dashboard-api:latest
         ports:
         - containerPort: 80
       imagePullSecrets:
