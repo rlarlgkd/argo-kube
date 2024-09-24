@@ -10,7 +10,7 @@ spec:
     path: manifests/
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: default
+    namespace: argo-rollouts # namespace 잘 지정해줘야해
   syncPolicy:
     automated:
       prune: true
