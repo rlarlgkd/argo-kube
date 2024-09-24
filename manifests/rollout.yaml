@@ -1,26 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: my-app-rollout
+  name: dtx-dashboard-backend-rollout
 spec:
   replicas: 3
   strategy:
     blueGreen:
-      activeService: my-app-active-svc  # 활성화된 서비스
-      previewService: my-app-preview-svc # 새 버전 배포를 미리 볼 수 있는 서비스
-      autoPromotionEnabled: false       # 수동으로 배포 전환을 허용
-      scaleDownDelaySeconds: 30         # 트래픽 전환 후 이전 파드를 제거하는 시간 지연
+      activeService: dtx-dashboard-backend-active-svc
+      previewService: dtx-dashboard-backend-preview-svc
+      autoPromotionEnabled: false
+      scaleDownDelaySeconds: 30
   selector:
     matchLabels:
-      app: my-app
+      app: dtx-dashboard-backend
   template:
     metadata:
       labels:
-        app: my-app
+        app: dtx-dashboard-backend
     spec:
       containers:
-      - name: my-app
-        image: anvesh35/echo-pod-name:v1.0.0     # 새 버전 이미지
+      - name: dtx-dashboard-backend
+        image: rlarlgkd/dashboard-api:82
         ports:
         - containerPort: 80
         readinessProbe:

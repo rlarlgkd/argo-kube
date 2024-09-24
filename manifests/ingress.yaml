@@ -1,16 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: my-app-ingress
+  name: dtx-dashboard-backend-ingress
 spec:
   rules:
-  - host: my-app.example.com
+  - host: 34.47.102.243
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: my-app-active-svc
+            name: dtx-dashboard-backend-active-svc
             port:
               number: 80
