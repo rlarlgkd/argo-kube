@@ -23,6 +23,12 @@ spec:
         image: rlarlgkd/dashboard-api:82
         ports:
         - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
         env:   # 여기에서 환경 변수를 설정
         - name: DB_NAME
           valueFrom:
