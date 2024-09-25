@@ -1,0 +1,17 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - containerPort: 30007  # Kind 내부의 NodePort (서비스)
+        hostPort: 30007       # GCP VM의 외부 포트
+        protocol: TCP
+      - containerPort: 30008
+        hostPort: 30008
+        protocol: TCP
+  - role: worker
+  - role: worker
+  - role: worker
+networking:
+  apiServerAddress: "0.0.0.0"  # 외부에서 접근 가능하도록 API 서버를 모든 IP에서 수신하도록 설정
+  apiServerPort: 6443           # API 서버 포트
