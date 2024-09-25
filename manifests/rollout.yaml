@@ -8,8 +8,8 @@ spec:
     blueGreen:
       activeService: dtx-dashboard-backend-active-svc
       previewService: dtx-dashboard-backend-preview-svc
-      autoPromotionEnabled: false
-      scaleDownDelaySeconds: 30
+      autoPromotionEnabled: true  # 자동 승격 설정
+      scaleDownDelaySeconds: 30    # 승격 후 기존 파드 종료 시간
   selector:
     matchLabels:
       app: dtx-dashboard-backend
